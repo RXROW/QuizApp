@@ -32,7 +32,6 @@ export const QuizProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log('API Response:', data); // Debug log
 
       if (data && data.data && Array.isArray(data.data.questions)) {
         setQuizData(data.data.questions);

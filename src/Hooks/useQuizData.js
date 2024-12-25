@@ -6,12 +6,7 @@ export const useQuizData = () => {
   const [error, setError] = useState(null);
   const [selectedSubject, setSelectedSubject] = useState(null);
 
-  const subjects = [
-    { id: 1, name: 'ai', label: 'AI', icon: '📐' },
-    { id: 2, name: 'science', label: 'Science', icon: '🔬' },
-    { id: 3, name: 'history', label: 'History', icon: '📚' },
-    { id: 4, name: 'geography', label: 'Geography', icon: '🌎' }
-  ];
+ 
 
   const fetchQuestionsBySubject = useCallback(async (subject) => {
     setLoading(true);
@@ -27,9 +22,6 @@ export const useQuizData = () => {
       }
 
       const data = await response.json();
-      console.log('API Response:', data); // Add this to debug
-
-      // Check if data exists and has the expected structure
       if (data && data.data && Array.isArray(data.data.questions)) {
         setQuizData(data.data.questions);
         setSelectedSubject(subject);
