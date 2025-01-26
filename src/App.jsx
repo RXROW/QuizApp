@@ -1,47 +1,38 @@
-import React, { useState } from 'react';
-import { QuizProvider, useQuizContext } from './context/QuizContext';
-import Quiz from './components/Quiz';
-import ErrorBoundary from './components/ErrorBoundary';
-import Subjects from './components/Subjects';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { QuizProvider } from './context/QuizContext';
+import { QuizApp } from './components/quiz/QuizApp';
+import Signup from './components/auth/Signup'; 
+import Login from './components/auth/Login'; 
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import { ToastContainer } from 'react-toastify'; // Ensure this import is present
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 
 function App() {
   return (
-    <QuizProvider>
-      <QuizApp />
-    </QuizProvider>
-  );
-}
-
-function QuizApp() {
-  const { selectedSubject, handleSubjectSelect, handleBackToSubjects } = useQuizContext();
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <header className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Quiz App</h1>
-          <p className="text-gray-600">Test your knowledge across various subjects</p>
-        </header>
-
-        <main>
-          {!selectedSubject ? (
-            <Subjects onSelectSubject={handleSubjectSelect} />
-          ) : (
-            <ErrorBoundary>
-            <Quiz 
-              subject={selectedSubject} 
-              onBack={handleBackToSubjects} 
-            />
-          </ErrorBoundary>
-          
-          )}
-        </main>
-
-        <footer className="mt-12 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Quiz App. All rights reserved.</p>
-        </footer>
-      </div>
-    </div>
+    <Router>
+      <QuizProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<QuizApp />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </QuizProvider>
+    </Router>
   );
 }
 

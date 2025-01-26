@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useQuizContext } from '../context/QuizContext';
+import { useQuizContext } from '../../context/QuizContext';
 import Result from './Result';
 import Button from './Button';
 import Question from './Question';

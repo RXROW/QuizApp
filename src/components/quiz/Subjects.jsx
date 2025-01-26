@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuizContext } from '../context/QuizContext';
+import { useQuizContext } from '../../context/QuizContext';
 
 const Subjects = () => {
   const { handleSubjectSelect, loading } = useQuizContext();
