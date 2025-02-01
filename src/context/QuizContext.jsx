@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-
+import { useAuth } from '../context/UserContext';  
+import {   useNavigate } from 'react-router-dom';
 const QuizContext = createContext(undefined);
-
+ 
 export const useQuizContext = () => {
   const context = useContext(QuizContext);
   
@@ -17,8 +18,12 @@ export const QuizProvider = ({ children }) => {
   const [quizData, setQuizData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const handleSubjectSelect = async (subject) => {
+    if (!user) {
+      navigate("/login")
+    }
     setLoading(true);
     setError(null);
     
