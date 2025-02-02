@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';  
 import { QuizProvider } from './context/QuizContext';
 import { QuizApp } from './components/quiz/QuizApp';
 import Signup from './components/auth/Signup';
@@ -19,7 +19,7 @@ import ProtectedRoute from './ProtectedRoute'; // Import the ProtectedRoute comp
 
 function App() {
   return (
-    <Router>
+    <Router>  
       <UserProvider>
         <QuizProvider>
           <ToastContainer
