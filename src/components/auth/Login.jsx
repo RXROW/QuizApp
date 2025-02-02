@@ -34,62 +34,65 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 border rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-md p-6 border rounded-lg bg-white">
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
-      <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        {({ isSubmitting }) => (
-          <Form>
-            <div className="mb-4">
-              <label htmlFor="email" className="block mb-2 font-medium">
-                Email
-              </label>
-              <Field
-                type="email"
-                id="email"
-                name="email"
-                className="w-full px-4 py-2 border rounded-md"
-                placeholder="Enter your email"
-              />
-              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-            </div>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+          {({ isSubmitting }) => (
+            <Form>
+              <div className="mb-4">
+                <label htmlFor="email" className="block mb-2 font-medium text-gray-700">
+                  Email
+                </label>
+                <Field
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your email"
+                />
+                <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+              </div>
 
-            <div className="mb-4">
-              <label htmlFor="password" className="block mb-2 font-medium">
-                Password
-              </label>
-              <Field
-                type="password"
-                id="password"
-                name="password"
-                className="w-full px-4 py-2 border rounded-md"
-                placeholder="Enter your password"
-              />
-              <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-            </div>
+              <div className="mb-4">
+                <label htmlFor="password" className="block mb-2 font-medium text-gray-700">
+                  Password
+                </label>
+                <Field
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter your password"
+                />
+                <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+              </div>
 
-            <div className=" mb-2 text-right">
-              <Link to="/forgot-password" className="text-blue-600 underline">
-                Forgot Password?
-              </Link>
-            </div>
+              <div className="mb-4 text-right">
+                <Link to="/forget-password" className="text-blue-600 hover:underline">
+                  Forgot Password?
+                </Link>
+              </div>
 
-            <button
-              type="submit"
-              className="w-full py-2 bg-blue-600 text-white rounded-md"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Logging in...' : 'Login'}
-            </button>
-            
-            <div className="my-2 text-left font-normal">
-            If You Don't Have an account please {" "}
-              <Link  to="/signup" className="text-blue-600  underline">
-               Sign Up              </Link>
-            </div>
-          </Form>
-        )}
-      </Formik>
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Logging in...' : 'Login'}
+              </button>
+
+              <div className="mt-4 text-center text-sm">
+                Don't have an account?{' '}
+                <Link to="/signup" className="text-blue-600 hover:underline">
+                  Sign Up
+                </Link>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
