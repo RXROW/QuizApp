@@ -16,18 +16,8 @@ import CreateNewSubject from "./components/dashboard/CreateSubject/CreateNewSubj
 import Users from "./components/dashboard/users/Users";
 import ForgetPassword from "./components/auth/ForgetPassword";
 import ProtectedRoute from "./ProtectedRoute";
-import { useNavigate } from "react-router-dom";
 function App() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    } else {
-      navigate("/login");
-    }
-  }, [user, navigate]);
+ 
   return (
     <Router>
       <UserProvider>
